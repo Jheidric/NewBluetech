@@ -6,26 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bluetech Website</title>
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .background-image {
+            height: 100%;
+            background-image: url('BACKGROUND@$.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         /* Basic Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         /* Header with Menu */
         header {
             background-color: #333;
             color: white;
-            padding: 10px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         /* Logo */
         .logo {
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
             color: white;
             cursor: pointer;
@@ -40,9 +56,9 @@
         nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 5px;
-            font-size: 16px;
+            padding: 15px 25px;
+            margin: 0 10px;
+            font-size: 18px;
             cursor: pointer;
         }
 
@@ -50,39 +66,51 @@
             background-color: #444;
         }
 
-        /* Right side buttons (Search, Cart, Account) */
+        /* Right side buttons */
         .right-menu {
             display: flex;
             align-items: center;
         }
 
         .right-menu input[type="text"] {
-            padding: 8px;
-            width: 200px;
+            padding: 12px;
+            width: 250px;
             display: none;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
         .right-menu button {
-            padding: 8px 16px;
+            padding: 12px 20px;
             background-color: #444;
             color: white;
             border: none;
             cursor: pointer;
-            margin-left: 10px;
+            margin-left: 15px;
+            font-size: 18px;
         }
 
         .right-menu button:hover {
             background-color: #555;
         }
 
-        /* Hidden sections */
+        /* Content Section */
         .content-box {
             display: none;
             background-color: white;
             padding: 20px;
             margin-top: 10px;
-            border: 1px solid #ccc;
+            position: absolute;
+            top: 100px; /* Position directly below the header */
+            left: 0;
+            right: 0;
+            z-index: 2;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            /* Remove full screen size to fit the content */
+            max-height: 70vh; /* Limit height */
+            overflow-y: auto; /* Scroll if content exceeds height */
         }
 
         /* Footer */
@@ -90,8 +118,9 @@
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 20px 40px;
             margin-top: 20px;
+            font-size: 18px;
         }
 
         /* Responsive Design */
@@ -100,14 +129,17 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             nav {
                 flex-direction: column;
                 margin-top: 10px;
             }
+
             .right-menu {
                 flex-direction: column;
                 margin-top: 10px;
             }
+
             .right-menu button, .right-menu input {
                 width: 100%;
                 margin-top: 5px;
@@ -119,49 +151,41 @@
 
 <!-- Header Section -->
 <header>
-    <!-- Logo that leads to main page -->
     <div class="logo" onclick="window.location.href='index.html'">Bluetech</div>
-
-    <!-- Navigation Menu -->
     <nav>
         <a href="javascript:void(0)" onclick="toggleContent('about')">About Us</a>
         <a href="javascript:void(0)" onclick="toggleContent('service')">Service</a>
         <a href="javascript:void(0)" onclick="toggleContent('product')">Product</a>
         <a href="javascript:void(0)" onclick="toggleContent('contact')">Contact Info</a>
     </nav>
-
-    <!-- Right Side Buttons -->
     <div class="right-menu">
-        <!-- Search Button -->
         <button onclick="toggleSearch()">Search</button>
         <input type="text" id="search-bar" placeholder="Type to search..." />
-
-        <!-- Add to Cart Button -->
         <button onclick="window.location.href='BluetechAddToCart.html'">Add to Cart</button>
-        <!-- Account Button (leads to login page) -->
         <button id="accountBtn" onclick="showProfile()">My Account</button>
     </div>
 </header>
+<div class="background-image"></div>
 
 <!-- Content Sections -->
 <div id="about" class="content-box">
     <h2>About Us</h2>
-    <p>We are Bluetech Company, providing innovative solutions to technology since 2020 .</p>
+    <p>We are Bluetech, providing innovative solutions to technology and business needs.</p>
 </div>
 
 <div id="service" class="content-box">
     <h2>Service</h2>
-    <p>We offer a wide range of services including Computer building assistant, computer repair, web development, app development, and more.</p>
+    <p>We offer a wide range of services including web development, app development, and more.</p>
 </div>
 
 <div id="product" class="content-box">
     <h2>Product</h2>
-    <p>Our products range from hardware devices such as Monitor, keyboard, mouse, different wires connector and more. Explore our product line.</p>
+    <p>Our products range from software solutions to hardware devices. Explore our product line.</p>
 </div>
 
 <div id="contact" class="content-box">
     <h2>Contact Info</h2>
-    <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741 .</p>
+    <p>Get in touch with us via email at contact@bluetech.com or call +123-456-7890.</p>
 </div>
 
 <!-- Footer -->
@@ -217,4 +241,3 @@
 
 </body>
 </html>
-
