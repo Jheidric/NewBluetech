@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+
+<h2>Edit Profile</h2>
+
+<form id="editProfileForm">
+    <label for="newUsername">Username:</label>
+    <input type="text" id="newUsername" required><br>
+
+    <label for="newGender">Gender:</label>
+    <input type="text" id="newGender" required><br>
+
+    <label for="newContact">Contact Number:</label>
+    <input type="text" id="newContact" required><br>
+
+    <label for="newProfilePic">Profile Picture (URL):</label>
+    <input type="text" id="newProfilePic"><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<script>
+    window.onload = function() {
+        // Prefill the form with the current data
+        document.getElementById('newUsername').value = localStorage.getItem('loggedInUser');
+        document.getElementById('newGender').value = localStorage.getItem('userGender');
+        document.getElementById('newContact').value = localStorage.getItem('userContact');
+        document.getElementById('newProfilePic').value = localStorage.getItem('userProfilePic') || '';
+    };
+
+    document.getElementById('editProfileForm').onsubmit = function(event) {
+        event.preventDefault();
+
+        // Save the new data to localStorage
+        const newUsername = document.getElementById('newUsername').value;
+        const newGender = document.getElementById('newGender').value;
+        const newContact = document.getElementById('newContact').value;
+        const newProfilePic = document.getElementById('newProfilePic').value;
+
+        localStorage.setItem('loggedInUser', newUsername);
+        localStorage.setItem('userGender', newGender);
+        localStorage.setItem('userContact', newContact);
+        localStorage.setItem('userProfilePic', newProfilePic);
+
+        // Redirect to the profile page
+        window.location.href = 'bluetechprofile.html';
+    };
+</script>
+
+</body>
+</html>

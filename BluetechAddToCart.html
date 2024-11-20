@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Delivery List</title>
+</head>
+<body>
+
+<h1>Admin Delivery List</h1>
+
+<table id="delivery-list">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Orders will be listed here -->
+    </tbody>
+</table>
+
+<script>
+    // Simulate admin view of orders
+    function loadOrders() {
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const deliveryList = document.getElementById('delivery-list').getElementsByTagName('tbody')[0];
+        
+        orders.forEach((order, index) => {
+            const row = deliveryList.insertRow();
+            row.innerHTML = `
+                <td>${order.username}</td>
+                <td>${order.product}</td>
+                <td>$${order.price}</td>
+                <td><button onclick="cancelOrder(${index})">Cancel Order</button></td>
+            `;
+        });
+    }
+
+    // Function to cancel an order
+    function cancelOrder(index) {
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.splice(index, 1); // Remove order at the given index
+        localStorage.setItem('orders', JSON.stringify(orders));
+        alert('Order cancelled!');
+        location.reload(); // Refresh the list after canceling
+    }
+
+    // Load orders when the page loads
+    window.onload = loadOrders;
+</script>
+
+</body>
+</html>
