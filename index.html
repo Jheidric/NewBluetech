@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bluetech Website</title>
-    <style> 
+    <style>
         html, body {
             height: 100%;
             margin: 0;
@@ -155,83 +155,100 @@
         }
 
         /* Social Media Circles (Facebook, Twitter, Snapchat) */
-        .social-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 55%; /* Adjusted from 50% to 55% to move the circles lower */
-            width: 100%;
-            z-index: 10;
-            transform: translateY(-50%); /* Keeps it vertically centered based on the new top value */
-        }
+    .social-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 70%; /* Adjusted to be closer to the bottom */
+        width: 100%;
+        z-index: 10;
+    
+    }
 
-        /* Circle Style */
-        .social-circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #fff;
-            margin: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+    /* Circle Style */
+    .social-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #000000;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        opacity: 0; /* Start hidden */
+       
+    }
+    .social-circle img {
+        width: 60px;
+        height: 60px;
+    }
+    /* Animation for Facebook */
+    .facebook {
+        animation: fadeInOutFacebook 20s infinite;
+    }
+    /* Animation for Twitter */
+    .twitter {
+        animation: fadeInOutTwitter 20s infinite;
+    }
+    /* Animation for Snapchat */
+    .snapchat {
+        animation: fadeInOutSnapchat 20s infinite;
+    }
+    /* Animation for Facebook */
+    @keyframes fadeInOutFacebook {
+        0%, 33% {
+            opacity: 1;
+        }
+        34%, 100% {
             opacity: 0;
-            animation: fadeInOut 30s infinite;
-            transition: opacity 0.5s ease;
         }
+    }
+    /* Animation for Twitter */
+    @keyframes fadeInOutTwitter {
+        33%, 66% {
+            opacity: 1;
+        }
+        67%, 100% {
+            opacity: 0;
+        }
+    }
+    /* Animation for Snapchat */
+    @keyframes fadeInOutSnapchat {
+        66%, 99% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+</style>
+<!-- -->   
+    <script>
+    // Function to handle social media visibility cycle
+    function cycleSocialMediaIcons() {
+        let facebook = document.querySelector('.facebook');
+        let twitter = document.querySelector('.twitter');
+        let snapchat = document.querySelector('.snapchat');
 
-        .social-circle img {
-            width: 60px;
-            height: 60px;
-        }
+        let currentIndex = 0;
+        let socialMediaCircles = [facebook, twitter, snapchat];
 
-        /* Facebook Circle */
-        .facebook {
-            animation: fadeInOutFacebook 10s infinite;
-        }
-
-        /* Twitter Circle */
-        .twitter {
-            animation: fadeInOutTwitter 10s infinite;
-        }
-
-        /* Snapchat Circle */
-        .snapchat {
-            animation: fadeInOutSnapchat 10s infinite;
-        }
-
-        /* Animation for Facebook */
-        @keyframes fadeInOutFacebook {
-            0%, 33% {
-                opacity: 1;
-            }
-            34%, 100% {
-                opacity: 0;
-            }
-        }
-
-        /* Animation for Twitter */
-        @keyframes fadeInOutTwitter {
-            33%, 66% {
-                opacity: 1;
-            }
-            67%, 100% {
-                opacity: 0;
-            }
-        }
-
-        /* Animation for Snapchat */
-        @keyframes fadeInOutSnapchat {
-            66%, 99% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-    </style>
+        setInterval(function() {
+            // Hide all social media icons
+            socialMediaCircles.forEach(function(icon) {
+                icon.style.opacity = 0;
+            });
+            
+            socialMediaCircles[currentIndex].style.opacity = 1;
+    
+            currentIndex = (currentIndex + 1) % socialMediaCircles.length;
+        }, 8000); // visivility time //
+    }
+    // Call the function to start the cycle when the page loads
+    window.onload = cycleSocialMediaIcons;
+</script>
 </head>
 <body>
 
@@ -309,4 +326,5 @@
 
 </body>
 </html>
+
 
