@@ -9,14 +9,21 @@
         html, body {
             height: 100%;
             margin: 0;
+            padding: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        .background-image {
+        /* Video Background */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background-image: url('BACKGROUND@$.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+            object-fit: cover; /* Ensures the video covers the full screen */
+            z-index: -1; /* Places the video behind all other elements */
         }
 
         /* Basic Styles */
@@ -25,11 +32,12 @@
             margin: 0;
             padding: 0;
             position: relative;
+            flex-grow: 1;
         }
 
         /* Header with Menu */
         header {
-            background-color: #333;
+            background-color: #333; /* No transparency */
             color: white;
             padding: 20px 40px;
             display: flex;
@@ -115,12 +123,12 @@
 
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: #333; /* No transparency */
             color: white;
             text-align: center;
             padding: 20px 40px;
-            margin-top: 20px;
             font-size: 18px;
+            margin-top: auto; /* Pushes footer to the bottom */
         }
 
         /* Responsive Design */
@@ -145,9 +153,93 @@
                 margin-top: 5px;
             }
         }
+
+        /* Social Media Circles (Facebook, Twitter, Snapchat) */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 55%; /* Adjusted from 50% to 55% to move the circles lower */
+            width: 100%;
+            z-index: 10;
+            transform: translateY(-50%); /* Keeps it vertically centered based on the new top value */
+        }
+
+        /* Circle Style */
+        .social-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInOut 30s infinite;
+            transition: opacity 0.5s ease;
+        }
+
+        .social-circle img {
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Facebook Circle */
+        .facebook {
+            animation: fadeInOutFacebook 10s infinite;
+        }
+
+        /* Twitter Circle */
+        .twitter {
+            animation: fadeInOutTwitter 10s infinite;
+        }
+
+        /* Snapchat Circle */
+        .snapchat {
+            animation: fadeInOutSnapchat 10s infinite;
+        }
+
+        /* Animation for Facebook */
+        @keyframes fadeInOutFacebook {
+            0%, 33% {
+                opacity: 1;
+            }
+            34%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* Animation for Twitter */
+        @keyframes fadeInOutTwitter {
+            33%, 66% {
+                opacity: 1;
+            }
+            67%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* Animation for Snapchat */
+        @keyframes fadeInOutSnapchat {
+            66%, 99% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
+
+<!-- Background Video -->
+<video class="background-video" autoplay muted loop>
+    <source src="videobackground.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
 <!-- Header Section -->
 <header>
@@ -158,35 +250,40 @@
         <a href="javascript:void(0)" onclick="toggleContent('product')">Product</a>
         <a href="javascript:void(0)" onclick="toggleContent('contact')">Contact Info</a>
     </nav>
-    <div class="right-menu">
-        <button onclick="toggleSearch()">Search</button>
-        <input type="text" id="search-bar" placeholder="Type to search..." />
-        <button onclick="window.location.href='BluetechAddToCart.html'">Add to Cart</button>
-        <button id="accountBtn" onclick="showProfile()">My Account</button>
-    </div>
 </header>
-<div class="background-image"></div>
 
 <!-- Content Sections -->
 <div id="about" class="content-box">
     <h2>About Us</h2>
-    <p>We are Bluetech, one of the leading computer technology company in the philippines since 2020
-        we start from a small Computer shop 2012 and becasue of the advancement of technology we decide to development and improve our business which is the reason why Blue tech has been born.</p>
+    <p>We are Bluetech, one of the leading computer technology company in the Philippines since 2020...</p>
 </div>
 
 <div id="service" class="content-box">
     <h2>Service</h2>
-    <p>We offer a wide range of services including Computer Parts selling, Computer Repair, Builidng Computer Assitant and software development .</p>
+    <p>We offer a wide range of services including Computer Parts selling, Computer Repair...</p>
 </div>
 
 <div id="product" class="content-box">
     <h2>Product</h2>
-    <p>Our products range from hardware devices, component, software system and more. To Explore more of our product go to add cart now.</p>
+    <p>Our products range from hardware devices, components, software systems, and more...</p>
 </div>
 
 <div id="contact" class="content-box">
     <h2>Contact Info</h2>
-    <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741.</p>
+    <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741...</p>
+</div>
+
+<!-- Social Media Circles (Facebook, Twitter, Snapchat) -->
+<div class="social-container">
+    <div class="social-circle facebook" onclick="window.location.href='https://www.facebook.com'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook">
+    </div>
+    <div class="social-circle twitter" onclick="window.location.href='https://www.twitter.com'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Twitter_Logo_2012.svg/1024px-Twitter_Logo_2012.svg.png" alt="Twitter">
+    </div>
+    <div class="social-circle snapchat" onclick="window.location.href='https://www.snapchat.com'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Snapchat_logo_2020.svg/2560px-Snapchat_logo_2020.svg.png" alt="Snapchat">
+    </div>
 </div>
 
 <!-- Footer -->
@@ -198,47 +295,18 @@
     // Function to toggle content visibility (open and close)
     function toggleContent(section) {
         const sectionElement = document.getElementById(section);
-        // If the section is currently visible, hide it; otherwise, show it
         if (sectionElement.style.display === 'block') {
             sectionElement.style.display = 'none';
         } else {
-            // Hide all sections first
             const sections = ['about', 'service', 'product', 'contact'];
             sections.forEach(function(sec) {
                 document.getElementById(sec).style.display = 'none';
             });
-            // Show the selected section
             sectionElement.style.display = 'block';
         }
     }
-
-    // Function to toggle search bar visibility
-    function toggleSearch() {
-        const searchBar = document.getElementById('search-bar');
-        searchBar.style.display = (searchBar.style.display === 'block') ? 'none' : 'block';
-    }
-
-    // Function to display profile if user is logged in
-    function showProfile() {
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        if (loggedInUser) {
-            window.location.href = 'profile.html'; // Redirect to the profile page
-        } else {
-            window.location.href = 'Bluetechloginandsignup.html'; // Redirect to login if not logged in
-        }
-    }
-
-    // Check if user is logged in and update the account button accordingly
-    window.onload = function() {
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        const accountBtn = document.getElementById('accountBtn');
-        if (loggedInUser) {
-            accountBtn.innerHTML = 'My Profile'; // Change the button text to My Profile
-        } else {
-            accountBtn.innerHTML = 'My Account'; // Default button text if not logged in
-        }
-    };
 </script>
 
 </body>
 </html>
+
