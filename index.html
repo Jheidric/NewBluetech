@@ -15,7 +15,7 @@
             flex-direction: column;
         }
 
-        /* Video Background */ /* still under updating */
+        /* Video Background */
         .background-video {
             position: absolute;
             top: 0;
@@ -47,7 +47,7 @@
             z-index: 1;
         }
 
-        /* Logo */ /* Nothing yet */
+        /* Logo */
         .logo {
             font-size: 30px;
             font-weight: bold;
@@ -116,7 +116,6 @@
             max-width: 90%;
             margin-left: 5%;
             margin-right: 5%;
-            /* Remove full screen size to fit the content */
             max-height: 70vh; /* Limit height */
             overflow-y: auto; /* Scroll if content exceeds height */
         }
@@ -152,84 +151,28 @@
                 width: 100%;
                 margin-top: 5px;
             }
+
+            /* Content box should be fully visible on small screens */
+            .content-box {
+                position: relative; /* Remove absolute positioning for better layout */
+                margin-top: 100px;
+                max-width: 100%;
+                box-shadow: none; /* Remove shadow on small screens */
+            }
+
         }
 
-        /* Social Media Circles (Facebook, Twitter, Snapchat) */
-        .social-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 70%; /* Adjusted to be closer to the bottom */
-            width: 100%;
-            z-index: 10;
-        }
-
-        /* Circle Style */
-        .social-circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #000000;
-            margin: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0; /* Start hidden */
-            transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
-        }
-        .social-circle img {
-            width: 60px;
-            height: 60px;
-        }
-    </style>   
-    <script>
-        // Function to handle social media visibility cycle
-function cycleSocialMediaIcons() {
-    let facebook = document.querySelector('.facebook');
-    let twitter = document.querySelector('.twitter');
-    let snapchat = document.querySelector('.snapchat');
-
-    // Initially hide all social media icons
-    facebook.style.opacity = 0;
-    twitter.style.opacity = 0;
-    snapchat.style.opacity = 0;
-
-    // Sequence to make them appear
-    setTimeout(function() {
-        facebook.style.opacity = 1; // Show Facebook after 1 seconds
-    }, 1000);
-
-    setTimeout(function() {
-        twitter.style.opacity = 1; // Show Twitter after 2 seconds
-    }, 2000);
-
-    setTimeout(function() {
-        snapchat.style.opacity = 1; // Show Snapchat after 3 seconds
-    }, 3000);
-
-    // After all icons have appeared, reset and start the cycle again
-    setTimeout(function() {
-        facebook.style.opacity = 0;
-        twitter.style.opacity = 0;
-        snapchat.style.opacity = 0;
         
-        // Call the cycle function again after a delay (for resetting)
-        setTimeout(cycleSocialMediaIcons, 1000); // Wait 1 seconds before starting the cycle again
-    }, 6000); // Wait for the last icon (Snapchat) to appear before resetting
-}
 
-// Call the function to start the cycle when the page loads
-window.onload = cycleSocialMediaIcons;
-    </script>
+    </style>   
+   
 </head>
 <body>
 
 <!-- Background Video -->
 <video class="background-video" autoplay muted loop>
-    <source src="videobackground2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+    <source src="videobackground.mp4" type="video/mp4">
+    
 </video>
 
 <!-- Header Section -->
@@ -264,18 +207,6 @@ window.onload = cycleSocialMediaIcons;
     <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741...</p>
 </div>
 
-<!-- Social Media Circles (Facebook, Twitter, Snapchat) -->
-<div class="social-container">
-    <div class="social-circle facebook" onclick="window.location.href='https://www.facebook.com'">
-        <img src="facebookimage.jpg" alt="Facebook">
-    </div>
-    <div class="social-circle twitter" onclick="window.location.href='https://www.twitter.com'">
-        <img src="twitterimage.png" alt="Twitter">
-    </div>
-    <div class="social-circle snapchat" onclick="window.location.href='https://www.snapchat.com'">
-        <img src="snapchatimage.png" alt="Snapchat">
-    </div>
-</div>
 
 <!-- Footer -->
 <footer>
