@@ -10,9 +10,9 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            position: relative;
             display: flex;
             flex-direction: column;
+            font-family: Arial, sans-serif;
         }
 
         /* Video Background */
@@ -26,13 +26,14 @@
             z-index: -1; /* Places the video behind all other elements */
         }
 
-        /* body Styles */
+        /* Body Styles */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             position: relative;
-            flex-grow: 1;
         }
 
         /* Header with Menu */
@@ -43,7 +44,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1;
         }
 
@@ -74,44 +77,20 @@
             background-color: #444;
         }
 
-        /* Right side buttons */
-        .right-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-menu input[type="text"] {
-            padding: 12px;
-            width: 250px;
-            display: none;
-            margin-right: 15px;
-        }
-
-        .right-menu button {
-            padding: 12px 20px;
-            background-color: #444;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-left: 15px;
-            font-size: 18px;
-        }
-
-        .right-menu button:hover {
-            background-color: #555;
-        }
-
         /* Content Section */
+        .content-container {
+            margin-top: 80px; /* Ensure content doesn't hide under the fixed header */
+            flex-grow: 1;
+            overflow-y: auto; /* Makes the content scrollable */
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
         .content-box {
-            display: none;
             background-color: white;
             padding: 20px;
             margin-top: 10px;
-            position: absolute;
-            top: 100px; /* Position directly below the header */
-            left: 0;
-            right: 0;
-            z-index: 2;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 90%;
             margin-left: 5%;
@@ -128,6 +107,10 @@
             padding: 20px 40px;
             font-size: 18px;
             margin-top: auto; /* Pushes footer to the bottom */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
         }
 
         /* Responsive Design */
@@ -159,20 +142,14 @@
                 max-width: 100%;
                 box-shadow: none; /* Remove shadow on small screens */
             }
-
         }
-
-        
-
     </style>   
-   
 </head>
 <body>
 
 <!-- Background Video -->
 <video class="background-video" autoplay muted loop>
     <source src="videobackground.mp4" type="video/mp4">
-    
 </video>
 
 <!-- Header Section -->
@@ -186,28 +163,28 @@
     </nav>
 </header>
 
-<!-- Content Sections -->
-<div id="about" class="content-box">
-    <h2>About Us</h2>
-    <p>We are Bluetech, one of the leading computer technology company in the Philippines since 2020...</p>
+<!-- Main Content Section (Scrollable) -->
+<div class="content-container">
+    <div id="about" class="content-box">
+        <h2>About Us</h2>
+        <p>hfjtj </p>
+    </div>
+
+    <div id="service" class="content-box">
+        <h2>Service</h2>
+        <p>We offer a wide range of services including Computer Parts selling, Computer Repair...</p>
+    </div>
+
+    <div id="product" class="content-box">
+        <h2>Product</h2>
+        <p>Our products range from hardware devices, components, software systems, and more...</p>
+    </div>
+
+    <div id="contact" class="content-box">
+        <h2>Contact Info</h2>
+        <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741...</p>
+    </div>
 </div>
-
-<div id="service" class="content-box">
-    <h2>Service</h2>
-    <p>We offer a wide range of services including Computer Parts selling, Computer Repair...</p>
-</div>
-
-<div id="product" class="content-box">
-    <h2>Product</h2>
-    <p>Our products range from hardware devices, components, software systems, and more...</p>
-</div>
-
-<div id="contact" class="content-box">
-    <h2>Contact Info</h2>
-    <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741...</p>
-</div>
-
-
 <!-- Footer -->
 <footer>
     <p>&copy; 2024 Bluetech. All Rights Reserved.</p>
@@ -231,3 +208,4 @@
 
 </body>
 </html>
+
