@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bluetech Website</title>
+    <title>Bluetech</title>
     <style>
         html, body {
             height: 100%;
@@ -26,13 +26,96 @@
             z-index: -1;
         }
 
+        .background-video::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gradient */
+            z-index: 0;
+        }
+
+        .intro-text { /*Welcome message */
+            color: white;
+            font-size: 18px;
+            margin-top: 270px;
+        }
+
+        .second-text {
+            color: white;
+            font-size: 18px;
+        }
+
+        .third-text {
+            color: white;
+            font-size: 18px;
+        }
+
+        .product-service span {
+            color: white;
+            font-size: 25px;
+        }
+
+        .product-service {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .product-service a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-service span {
+            color: white;
+            font-size: 25px;
+            margin: 15px 250px;
+        }
+
+        .circular-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .circular-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Body Styles */
+        body {
+            color: rgb(29, 28, 28)(9, 28, 28);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
         /* Header with Menu */
         header {
             background-color: #333;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 25px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             position: fixed;
             width: 100%;
@@ -50,6 +133,7 @@
         nav {
             display: flex;
             align-items: center;
+            margin-left: 565px;
         }
 
         nav a {
@@ -62,22 +146,22 @@
             transition: transform 0.2s;
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                flex-direction: column;
-                margin-top: 10px;
-            }
-        }
-
         nav a:hover {
             background: linear-gradient(to right, #6a11cb, #2575fc);
             transform: scale(1.1);
         }
+
+                /* Hover effect to expand both image and text */
+        .product-service a:hover .circular-image {
+            transform: scale(1.1); /* Expand the image */
+            transition: transform 0.2s;
+        }
+
+        .product-service a:hover span {
+            transform: scale(1.2); /* Slightly increase text size */
+            transition: transform 0.2s;
+        }
+
 
         /* Footer */
         footer {
@@ -97,198 +181,70 @@
             margin-right: 10px;
         }
 
-        /* Profile Pop-Up Box */
-        .popup-box {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            box-shadow: 0 12px 30px rgba(163, 140, 140, 0.3);
-            width: 80%;
-            max-width: 700px;
-            height: 500px; /* Adjusted for more space */
-            border-radius: 15px;
-            z-index: 10;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-            overflow-y: auto; /* Scrollable if content overflows */
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-        .popup-box img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-        }
+            nav {
+                flex-direction: column;
+                margin-top: 10px;
+            }
 
-        .popup-box h2 {
-            margin: 10px 0;
-        }
+            .product-service {
+                flex-direction: column;
+            }
 
-        .popup-box p {
-            margin: 15px 0;
-            font-size: 16px;
-        }
-
-        /* Animation */
-        .popup-box.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .popup-btn-container {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            width: 100%;
-        }
-
-        .left-btn, .right-btn {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .left-btn {
-            left: 10px;
-        }
-
-        .right-btn {
-            right: 10px;
-        }
-
-        .left-btn:hover, .right-btn:hover {
-            background-color: #555;
+            .product-service div {
+                margin-bottom: 40px;
+            }
         }
     </style>
 </head>
-
 <body>
-
-<!-- Background Video -->
-<video class="background-video" autoplay muted loop>
-    <source src="videobackground2.mp4" type="video/mp4">
-</video>
-
-<!-- Header Section -->
-<header>
-    <!-- Logo -->
-    <a href="https://jheidric.github.io/NewBluetech/" class="logo">Bluetech</a>
-    
-    <!-- Navigation Menu -->
-    <nav role="navigation">
-        <a href="javascript:void(0)" onclick="togglePopup()">About Us</a>
-        <a href="Service.html">Service</a>
-        <a href="Product.html">Product</a>
-        <a href="contact.html">Contact Info</a>
-    </nav>
-</header>
-
-<!-- Profile Pop-Up Box -->
-<div id="popup-box" class="popup-box">
-    <img id="profile-img" src="" alt="Profile Image">
-    <h2 id="profile-name"></h2>
-    <p id="profile-contact"></p>
-    <p id="profile-email"></p>
-    <p id="profile-facebook"></p>
-    <p id="profile-info"></p>
-
-    <!-- Navigation Buttons for the profile pop-up -->
-    <div class="popup-btn-container">
-        <button class="left-btn" onclick="changeProfile('left')">←</button>
-        <button class="right-btn" onclick="changeProfile('right')">→</button>
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop poster="fallback.jpg">
+        <source src="videobackground2.mp4" type="video/mp4">
+    </video>
+    <p1 class="intro-text">Welcome to Bluetech! Here we have all our products that we offer and all the services that we provide.</p1>
+    <p2 class="second-text">Get started by clicking here on our Products and Services, and browse our wide choices of quality</p2>
+    <p3 class="third-text"> computer products and our offered PC repair and building services.</p3>
+    <!-- Header Section -->
+    <header role="banner">
+        <div class="logo" onclick="window.location.href='Index.html'">Bluetech</div>
+        <nav role="navigation">
+            <a href="https://jheidric.github.io/BluetechAboutus/">About Us</a>
+            <a href="Service.html">Service</a>
+            <a href="Product.html">Product</a>
+            <a href="contact.html">Contact Info</a>
+        </nav>
+    </header>
+ 
+    <!-- Products and Services Section -->
+    <div class="product-service">
+        <div>
+            <a href="Product.html" style="text-decoration: none; color: inherit;">
+            <span>Products</span>
+            <div class="circular-image">
+                <img src="Card.jpg" alt="Product Image">
+            </div>
+        </div>
+        </a>
+        <div>
+            <a href="Service.html" style="text-decoration: none; color: inherit;">
+            <span>Services</span>
+            <div class="circular-image">
+                <img src="Fix.jpg" alt="Service Image">
+            </div>
+        </div>
+        </a>
     </div>
-</div>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Bluetech. All Rights Reserved.</p>
-</footer>
-
-<!-- JavaScript -->
-<script>
-    let currentProfileIndex = 0; // Corrected to start from the first profile
-    const profiles = [
-        { 
-            name: 'Jan Jheidric S. Dumagat',
-            contact: '+63-921-700-0741',
-            email: 'jjDumagat@kld.edu.ph',
-            facebook: 'https://facebook.com/janjheidricdumagat',
-            info: 'Senior Programmer and web developer expert in java language and html web development graduate of Bachelor of Science in Information Systems at Kolehiyo ng Lungsod ng Dasmariñas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Nulla vitae elit libero, a pharetra augue. Quisque ut nulla. Vestibulum rutrum rutrum neque. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui.',
-            img: 'images/download.jpg'
-        },
-        {
-            name: 'Aeron Cyrus A. Marasigan',
-            contact: '+63-977-386-6245',
-            email: 'yasuomaster318@gmail.com',
-            facebook: 'https://www.facebook.com/aeron.marasigan',
-            info: 'L One of the lead persons in bluetech. He is an expert in hardware troubleshooting and building PCs. He is a graduate of Bachelor of Science in Information Systems at Kolehiyo ng Lungsod ng Dasmariñas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.',
-            img: 'https://via.placeholder.com/100'
-        },
-        {
-            name: 'Ivan Kenji M. Cuevas',
-            contact: '+63-912-345-6789',
-            email: 'wryivankenji18@gmail.com',
-            facebook: 'https://www.facebook.com/ivan.cuevas',
-            info: 'Loves Beltran sisters. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.',
-            img: 'https://via.placeholder.com/100'
-        },
-        {
-            name: 'Jaderick L. Etolle',
-            contact: '+63-963-872-3370',
-            email: 'jadericketolle@gmail.com',
-            facebook: 'https://www.facebook.com/jaderick.etolle',
-            info: 'A dedicated member of Bluetech, with a passion for technology and problem-solving. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.',
-            img: 'https://via.placeholder.com/100'
-        }
-    ];
-
-    // Function to display the profile in the popup
-    function showProfile(index) {
-        const profile = profiles[index];
-        document.getElementById('profile-img').src = profile.img;
-        document.getElementById('profile-name').innerText = profile.name;
-        document.getElementById('profile-contact').innerText = 'Contact: ' + profile.contact;
-        document.getElementById('profile-email').innerText = 'Email: ' + profile.email;
-        document.getElementById('profile-facebook').innerHTML = '<a href="' + profile.facebook + '" target="_blank">Facebook Profile</a>';
-        document.getElementById('profile-info').innerText = profile.info;
-        document.getElementById('popup-box').classList.add('show');
-    }
-
-    // Show the profile when clicking on "About Us"
-    function togglePopup() {
-        const popupBox = document.getElementById('popup-box');
-        if (popupBox.classList.contains('show')) {
-            popupBox.classList.remove('show');
-        } else {
-            showProfile(currentProfileIndex);
-        }
-    }
-
-    // Change profile when clicking left or right button
-    function changeProfile(direction) {
-        if (direction === 'left') {
-            currentProfileIndex = (currentProfileIndex - 1 + profiles.length) % profiles.length;
-        } else {
-            currentProfileIndex = (currentProfileIndex + 1) % profiles.length;
-        }
-        showProfile(currentProfileIndex);
-    }
-</script>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bluetech. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
