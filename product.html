@@ -7,10 +7,11 @@
     <title>Product Page</title>
     <style>
         body{
-         background: url(images/5073414.jpg);
+         background: url(5073414.jpg);
          background-size: cover;
          font-family: Arial, Helvetica, sans-serif;
         }
+        
         html, body {
             height: 100%;
             margin: 0;
@@ -19,28 +20,6 @@
             flex-direction: column;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
-        }
-
-        /* Video Background */
-        .background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .background-video::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Overlay gradient */
-            z-index: 0;
         }
 
         /* Body Styles */
@@ -53,11 +32,12 @@
             flex-direction: column;
             height: 100%;
             position: relative;
+            overflow-x: hidden;
         }
 
         /* Header with Menu */
         header {
-            background-color: #333;
+            background: linear-gradient(90deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.7));
             color: white;
             padding: 15px 25px;
             display: flex;
@@ -97,12 +77,33 @@
             transform: scale(1.1);
         }
 
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Product Grid */
         .container {
             max-width: 1200px;
             margin: 80px auto 0;
             padding: 20px;
-            overflow-x: auto; /* Added for horizontal scroll */
+            overflow-x: hidden; /* Added for horizontal scroll */
             white-space: nowrap;
         }
 
@@ -123,6 +124,7 @@
             display: inline-block;
             white-space: normal; /* Allows text to wrap */
             position: relative; /* Ensure the zoom effect stays within bounds */
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .product img {
@@ -132,7 +134,7 @@
         }
 
         .product img:hover {
-            transform: scale(1.2); /* Zoom in */
+            transform: scale(1.1); /* Zoom in */
         }
 
         .product h3, .product p, .product .price, .product button {
@@ -165,15 +167,28 @@
             background-color: #218838;
         }
 
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
         /* Footer */
         footer {
-            background-color: #333;
+            background: linear-gradient(90deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.7));
             color: white;
             text-align: center;
             padding: 10px 20px;
             font-size: 14px;
-            margin-top: auto;
-            position: fixed;
+            margin-top: 20px;
+            position: static;
             bottom: 0;
             width: 100%;
             z-index: 1;
@@ -199,163 +214,122 @@
 </head>
 <body>
 
-    <!-- Background Video -->
-    <video class="background-video" autoplay muted loop poster="fallback.jpg">
-        <source src="videobackground2.mp4" type="video/mp4">
-    </video>
 
     <!-- Header Section -->
     <header>
-        <div class="logo" onclick="window.location.href='homepage.html'">Bluetech</div>
+        <div class="logo" onclick="window.location.href='Index.html'">Bluetech</div>
         <nav>
             <a href="Aboutus.html">About Us</a>
             <a href="Service.html">Service</a>
-            <a href="product.html">Product</a>
-            <a href="contact.html">Contact Info</a>
+            <a href="Product.html">Product</a>
+            <a href="Contact.html">Contact Info</a>
         </nav>
     </header>
-    
+    <div id="notification" class="notification">Product added to your cart!</div>
+        <script> // Global Notification
+        function addToCart(productName) {
+            const notification = document.getElementById('notification');
+            notification.textContent = productName + ' has been added to your cart!';
+        
+            // Show the notification
+            notification.classList.add('show');
+
+            // Hide the notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        </script>
     <!-- Product Grid Section -->
     <div class="container">
         <div class="product-grid">
             <!-- Product 1 -->
             <div class="product">
-                <img src="images/Orange and White Best Selling Product Instagram Post.png" alt="Product 1">
-                <h3>System unit 1</h3>
+                <img src="Products/Orange and White Best Selling Product Instagram Post.png" alt="Product 1">
+                <h3>System Unit 1</h3>
                 <p>Ryzen 5 5600G / B450M / 16GB DDR4 / 500GB SSD / 500W Power Supply / PC Case M-ATX Pre-build</p>
                 <div class="price">₱19,999.00</div>
-                <button onclick="addToCart('system unit 1')">Add to Cart</button>
+                <button onclick="addToCart('Product 1')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             
             <!-- Product 2 -->
             <div class="product">
-                <img src="images/keboard.png" alt="Product 2">
+                <img src="Products/keboard.png" alt="Product 2">
                 <h3>Logitech G Pro Mechanical Gaming Keyboard (GX Blue Clicky)</h3>
-                <p>Gaming keyboard</p>
+                <p>Gaming Keyboard</p>
                 <div class="price">₱4,495.00</div>
                 <button onclick="addToCart('Product 2')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 3 -->
             <div class="product">
-                <img src="images/Logitech G502 Lightspeed Wireless Gaming Mouse.png" alt="Product 3">
+                <img src="Products/Logitech G502 Lightspeed Wireless Gaming Mouse.png" alt="Product 3">
                 <h3>Logitech G502 Lightspeed Wireless Gaming Mouse </h3>
-                <p>Gaming mouse</p>
+                <p>Gaming Mouse</p>
                 <div class="price">₱5,495.00</div>
                 <button onclick="addToCart('Product 3')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 4 -->
             <div class="product">
-                <img src="images/MUSSO Aeolus Series Fabric Computer Gaming Chair 199A XL SIZE.png" alt="Product 4">
+                <img src="Products/MUSSO Aeolus Series Fabric Computer Gaming Chair 199A XL SIZE.png" alt="Product 4">
                 <h3>MUSSO Aeolus Series Fabric Computer Gaming Chair 199A XL SIZE</h3>
                 <p>Gaming Chair</p>
                 <div class="price">₱6,199.00</div>
                 <button onclick="addToCart('Product 4')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
-            
+
             <!-- Product 5 -->
             <div class="product">
-                <img src="images/ASUS TUF Gaming VG27AQ3A 27-inch 180Hz Gaming Monitor.png" alt="Product 5">
+                <img src="Products/ASUS TUF Gaming VG27AQ3A 27-inch 180Hz Gaming Monitor.png" alt="Product 5">
                 <h3>ASUS TUF Gaming VG27AQ3A 27-inch 180Hz Gaming Monitor</h3>
-                <p>Gaming monitor</p>
+                <p>Gaming Monitor</p>
                 <div class="price">₱15,650,00</div>
                 <button onclick="addToCart('Product 5')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 6 -->
             <div class="product">
-                <img src="images/Logitech G733 Lightspeed Wireless RGB Gaming Headset - Black.png" alt="Product 6">
+                <img src="Products/Logitech G733 Lightspeed Wireless RGB Gaming Headset - Black.png" alt="Product 6">
                 <h3>Logitech G733 Lightspeed Wireless RGB Gaming Headset - Black</h3>
-                <p>Gaming headset</p>
+                <p>Gaming Headset</p>
                 <div class="price">₱5,595.00</div>
                 <button onclick="addToCart('Product 6')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 7 -->
             <div class="product">
-                <img src="images/JBL Quantum Stream Studio Quad pattern premium USB microphone for streaming, recording and gaming..png" alt="Product 7">
+                <img src="Products/JBL Quantum Stream Studio Quad pattern premium USB microphone for streaming, recording and gaming..png" alt="Product 7">
                 <h3>JBL Quantum Stream Studio Quad pattern premium USB microphone for streaming, recording and gaming</h3>
-                <p>Microphone Gaming</p>
+                <p>Gaming Microphone</p>
                 <div class="price">₱8,999.00</div>
                 <button onclick="addToCart('Product 7')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 8 -->
             <div class="product">
-                <img src="images/JBL Quantum Duo PC Gaming Speakers.png" alt="Product 7">
+                <img src="Products/JBL Quantum Duo PC Gaming Speakers.png" alt="Product 7">
                 <h3>JBL Quantum Duo PC Gaming Speakers</h3>
-                <p>Speaker Gaming.</p>
+                <p>Speaker for Gaming</p>
                 <div class="price">₱4,199.00</div>
-                <button onclick="addToCart('Product 7')">Add to Cart</button>
+                <button onclick="addToCart('Product 8')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 9 -->
             <div class="product">
-                <img src="images/MSI RTX3050 VENTUS 2X 8G OC 8GB GDDR6 128-bit DP+HDMI (912-V397-418).png" alt="Product 7">
+                <img src="Products/MSI RTX3050 VENTUS 2X 8G OC 8GB GDDR6 128-bit DP+HDMI (912-V397-418).png" alt="Product 7">
                 <h3>MSI RTX3050 VENTUS 2X 8G OC 8GB GDDR6 128-bit DP+HDMI (912-V397-418) 9</h3>
-                <p>Graphic Card.</p>
+                <p>Graphics Card</p>
                 <div class="price">₱19,199.00</div>
-                <button onclick="addToCart('Product 7')">Add to Cart</button>
+                <button onclick="addToCart('Product 9')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
             
             <!-- Product 10 -->
             <div class="product">
-                <img src="images/AMD Ryzen™ 7 5700X Desktop Processors.png" alt="Product 7">
+                <img src="Products/AMD Ryzen™ 7 5700X Desktop Processors.png" alt="Product 7">
                 <h3>AMD Ryzen™ 7 5700X Desktop Processors (Up to 4.6GHz)</h3>
                 <p>Processors</p>
                 <div class="price">₱10,599.00</div>
-                <button onclick="addToCart('Product 7')">Add to Cart</button>
+                <button onclick="addToCart('Product 10')">Add to Cart</button>
             </div>
-            <script>
-                function addToCart(productName) {
-                    alert(productName + ' has been added to your cart.');
-                }
-            </script>
-            
