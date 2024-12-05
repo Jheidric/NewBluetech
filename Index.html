@@ -13,6 +13,7 @@
             display: flex;
             flex-direction: column;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         /* Video Background */
@@ -24,6 +25,7 @@
             height: 120%;
             object-fit: cover;
             z-index: -1;
+            filter: brightness(80%);
         }
 
         .background-video::after {
@@ -59,6 +61,7 @@
         }
 
         .product-service {
+            padding: 16px;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -111,7 +114,7 @@
 
         /* Header with Menu */
         header {
-            background-color: #333;
+            background: linear-gradient(90deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.7));
             color: white;
             padding: 15px 25px;
             display: flex;
@@ -165,7 +168,7 @@
 
         /* Footer */
         footer {
-            background-color: #333;
+            background: linear-gradient(90deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.7));
             color: white;
             text-align: center;
             padding: 10px 20px;
@@ -215,7 +218,7 @@
     <header role="banner">
         <div class="logo" onclick="window.location.href='Index.html'">Bluetech</div>
         <nav role="navigation">
-            <a href="https://jheidric.github.io/BluetechAboutus/">About Us</a>
+            <a href="Aboutus.html">About Us</a>
             <a href="Service.html">Service</a>
             <a href="Product.html">Product</a>
             <a href="contact.html">Contact Info</a>
