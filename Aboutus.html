@@ -7,6 +7,7 @@
     <title>About Us</title>
     <style>
         html, body {
+            background: url(Bluetech.png);
             height: 100%;
             margin: 0;
             padding: 0;
@@ -15,18 +16,6 @@
             font-family: Arial, sans-serif;
             overflow-x: hidden;
             overflow-y: hidden;
-        }
-
-        /* Video Background */
-        .background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            object-fit: cover;
-            z-index: -1;
-            filter: brightness(80%);
         }
 
         /* Header with Menu */
@@ -50,6 +39,12 @@
             color: white;
             cursor: pointer;
             text-decoration: none;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .logo:hover {
+            color: #2575fc;
         }
 
         nav {
@@ -123,7 +118,7 @@
             z-index: 10;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;;
         }
 
         .popup-box img {
@@ -131,7 +126,8 @@
             width: 120px;
             height: 120px;
             object-fit: cover;
-            border: 3px solid black;
+            border: 2px solid black;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .popup-box h2 {
@@ -189,11 +185,6 @@
 
 <body>
 
-<!-- Background Video -->
-<video class="background-video" autoplay muted loop>
-    <source src="videobackground2.mp4" type="video/mp4">
-</video>
-
 <!-- Header Section -->
 <header>
     <!-- Logo -->
@@ -204,7 +195,7 @@
         <a href="javascript:void(0)" onclick="togglePopup()">About Us</a>
         <a href="Service.html">Service</a>
         <a href="Product.html">Product</a>
-        <a href="contact.html">Contact Info</a>
+        <a href="Contactus.html">Contact Us</a>
     </nav>
 </header>
 
@@ -239,7 +230,7 @@
             email: 'acmarasigan@kld.edu.ph',
             facebook: 'https://www.facebook.com/aeron.marasigan',
             info: 'One of the lead persons in bluetech. He is an expert in hardware troubleshooting and building PCs. He is a graduate of Bachelor of Science in Information Systems at Kolehiyo ng Lungsod ng Dasmariñas.',
-            img: 'Cuevas.jpg'
+            img: 'Marasigan.jpg'
         },
         { 
             name: 'Jan Jheidric S. Dumagat',
@@ -256,7 +247,7 @@
             email: 'wryivankenji18@gmail.com',
             facebook: 'https://www.facebook.com/ivan.cuevas',
             info: 'Loves Beltrans sister, Sophia.',
-            img: 'https://via.placeholder.com/100'
+            img: 'Cuevas.jpg'
         },
         {
             name: 'Jaderick L. Etolle',
@@ -279,7 +270,7 @@
             contact: '+63-961-598-0091',
             email: 'matthewbeltran75@gmail.com',
             facebook: 'https://www.facebook.com/matthew.beltran',
-            info: 'Addict sa kanya.',
+            info: 'He is a Bluetech team member with expertise in software development, mentorship, and code quality assurance. A graduate of Kolehiyo ng Lungsod ng Dasmariñas with a BS in Information Systems, he brings innovation and collaboration to his work.',
             img: 'Beltran.jpg'
         }
     ];
