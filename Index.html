@@ -25,7 +25,6 @@
             height: 120%;
             object-fit: cover;
             z-index: -1;
-            filter: brightness(80%);
         }
 
         .background-video::after {
@@ -131,6 +130,13 @@
             font-weight: bold;
             color: white;
             cursor: pointer;
+            text-decoration: none;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .logo:hover {
+            color: #2575fc;
         }
 
         nav {
@@ -216,19 +222,19 @@
     <p3 class="third-text"> computer products and our offered PC repair and building services.</p3>
     <!-- Header Section -->
     <header role="banner">
-        <a href="https://jheidric.github.io/NewBluetech/" class="logo" style="text-decoration: none;">Bluetech</a>
+        <div class="logo" onclick="window.location.href='Index.html'">Bluetech</div>
         <nav role="navigation">
-            <a href="https://jheidric.github.io/BluetechAboutus/">About Us</a>
-            <a href="https://jheidric.github.io/BluetechService/">Service</a>
-            <a href="https://jheidric.github.io/bluetechProduct/">Product</a>
-            <a href="https://jheidric.github.io/BluetechContactus/">Contact Info</a>
+            <a href="Aboutus.html">About Us</a>
+            <a href="Service.html">Service</a>
+            <a href="Product.html">Product</a>
+            <a href="Contactus.html">Contact Us</a>
         </nav>
     </header>
  
     <!-- Products and Services Section -->
     <div class="product-service">
         <div>
-            <a href="https://jheidric.github.io/bluetechProduct/" style="text-decoration: none; color: inherit;">
+            <a href="Product.html" style="text-decoration: none; color: inherit;">
             <span>Products</span>
             <div class="circular-image">
                 <img src="Card.jpg" alt="Product Image">
